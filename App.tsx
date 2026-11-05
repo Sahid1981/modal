@@ -7,7 +7,7 @@ export default function App() {
   const [modalOn, setModalOn] = useState(false);
   return (
   <SafeAreaProvider>
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Modal
         animationType="slide"
         transparent={true}
@@ -17,9 +17,12 @@ export default function App() {
           setModalOn(!modalOn);
         }}>
       <View style={styles.container}>
-        <Pressable onPress={() => setModalOn(false)}>
-          <Text>Show modal message</Text>
-        </Pressable>
+        <View style={styles.modalBox}>
+          <Text>This is modal...</Text>
+          <Pressable onPress={() => setModalOn(false)}>
+            <Text>Close</Text>
+          </Pressable>
+        </View>
       </View>
 
       </Modal>
@@ -39,5 +42,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  modalBox: {
+    backgroundColor: '#cc02ff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 20,
+    width: '60%',
+    height: '20%',
   },
 });
