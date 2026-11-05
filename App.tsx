@@ -1,12 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { Alert, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
 export default function App() {
+  const [modalOn, setModalOn] = useState(false);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+  <SafeAreaProvider>
+    <SafeAreaView>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalOn}
+        onRequestClose={() => {
+          Alert.alert('Modal has been closed.');
+          setModalOn(!modalOn);
+        }}>
+      <View style={styles.container}>
+        <Pressable onPress={() => setModalOn(false)}>
+          <Text>Show modal message</Text>
+        </Pressable>
+      </View>
+
+      </Modal>
+      <Pressable onPress={() => setModalOn(true)}>
+        <Text>Show modal message</Text>
+      </Pressable>
+
+    </SafeAreaView>
+  </SafeAreaProvider>
+
   );
 }
 
