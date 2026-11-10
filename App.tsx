@@ -18,8 +18,8 @@ export default function App() {
         }}>
       <View style={styles.container}>
         <View style={styles.modalBox}>
-          <Text>This is modal...</Text>
-          <Pressable onPress={() => setModalOn(false)}>
+          <Text style={styles.message}>This is modal...</Text>
+          <Pressable style={styles.closeButton} onPress={() => setModalOn(false)}>
             <Text>Close</Text>
           </Pressable>
         </View>
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  
   modalBox: {
     backgroundColor: '#cc02ff',
     alignItems: 'center',
@@ -50,5 +51,15 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     width: '60%',
     height: '20%',
+  },
+
+  message: {
+    textAlign: 'center',
+  },
+
+  closeButton: {
+    position: 'absolute',
+    bottom: 12,
+    alingSelf: 'center',
   },
 });
