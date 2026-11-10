@@ -19,14 +19,14 @@ export default function App() {
       <View style={styles.container}>
         <View style={styles.modalBox}>
           <Text style={styles.message}>This is modal...</Text>
-          <Pressable style={styles.closeButton} onPress={() => setModalOn(false)}>
+          <Pressable style={[styles.closeButton, styles.button]} onPress={() => setModalOn(false)}>
             <Text>Close</Text>
           </Pressable>
         </View>
       </View>
 
       </Modal>
-      <Pressable onPress={() => setModalOn(true)}>
+      <Pressable style={styles.button} onPress={() => setModalOn(true)}>
         <Text>Show modal message</Text>
       </Pressable>
 
@@ -60,6 +60,13 @@ const styles = StyleSheet.create({
   closeButton: {
     position: 'absolute',
     bottom: 12,
-    alingSelf: 'center',
+    alignSelf: 'center',
+  },
+
+  button: {
+    backgroundColor: '#ffcc00',
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
   },
 });
